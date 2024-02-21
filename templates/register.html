@@ -5,15 +5,16 @@
 {% endblock %}
 
 {% block main %}
-    <form action="/register" method="post">
+    <form action="/register" method="post" onsubmit="return verifyPassword()">
         <div class="mb-3">
-            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="username" placeholder="Username" type="text">
+            <!--<label for="username">Username<span class="red-star">*</span></label>-->
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id ="username" placeholder="username" name="username" type="text" required> 
         </div>
         <div class="mb-3">
-            <input class="form-control mx-auto w-auto" name="password" placeholder="Password" type="password">
+            <input class="form-control mx-auto w-auto" id="password" name="password" placeholder="Password" type="password" required>
         </div>
         <div class="mb-3">
-            <input class="form-control mx-auto w-auto" name="confirmation" placeholder="password (again)" type="password">
+            <input class="form-control mx-auto w-auto" name="confirmation" placeholder="password (again)" type="password" requried>
         </div>
         <div class="mb-3">
             <select class="form-select mx-auto w-auto" name="uniselect" required>
@@ -44,7 +45,6 @@
                 <option>TSMU</option>
                 <option>TSU</option>
                 <option>UG</option>
-                
             </select>
         </div>
 

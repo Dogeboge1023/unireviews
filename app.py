@@ -17,7 +17,7 @@ app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
 # Configure CS50 Library to use SQLite database
-db = SQL("sqlite:///unireviews.db") #change this!!!!
+db = SQL("sqlite:///unireviews.db") 
 
 @app.after_request
 def after_request(response):
@@ -43,14 +43,6 @@ def login():
 
     # User reached route via POST (as by submitting a form via POST)
     if request.method == "POST":
-        # Ensure username was submitted
-        if not request.form.get("username"):
-            return apology("must provide username", 403)
-
-        # Ensure password was submitted
-        elif not request.form.get("password"):
-            return apology("must provide password", 403)
-
         # Query database for username
         rows = db.execute(
             "SELECT * FROM users WHERE username = ?", request.form.get("username")
@@ -96,16 +88,11 @@ def register():
         rows = db.execute("SELECT * FROM users WHERE username = :username", username=username)
         if len(rows) > 0:
             return apology("Username is taken", 400)
-        if not username:
-            return apology("Must provide username", 400)
-        password = request.form.get("password")
-        if not password:
-            return apology("Must provide password", 400)
+        password = request.form.get("password") 
         confirm_password = request.form.get("confirmation")
-        if not confirm_password:
-            return apology("Must confirm password", 400)
-        if password != confirm_password:
-            return apology("Passwords do not match", 400)
+        if password != confirm_password: #replace this with js.
+            flash('passwords do not match', 'error' )
+            return redirect("/register")
         hashed_password = generate_password_hash(password)
         university = request.form.get("uniselect")
         db.execute("INSERT INTO users (username, hash,university) VALUES(?,?,?)", username, hashed_password,university)
