@@ -108,8 +108,7 @@ def register():
             return apology("Passwords do not match", 400)
         hashed_password = generate_password_hash(password)
         university = request.form.get("uniselect")
-        db.execute("INSERT INTO users (username, hash) VALUES(?,?)", username, hashed_password)
-        
+        db.execute("INSERT INTO users (username, hash,university) VALUES(?,?,?)", username, hashed_password,university)
         new_user_id = db.execute("SELECT id FROM users WHERE username = :username", username=username)
         session["user_id"] = new_user_id[0]['id']
         return redirect("/")
