@@ -5,17 +5,18 @@
 {% endblock %}
 
 {% block main %}
-    <form action="/register" method="post" onsubmit="return verifyPassword()">
+    <form id="registerForm" action="/register" method="post">
         <div class="mb-3">
             <!--<label for="username">Username<span class="red-star">*</span></label>-->
-            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id ="username" placeholder="username" name="username" type="text" required> 
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id ="username" placeholder="username" name="username" type="text" requried> 
         </div>
         <div class="mb-3">
-            <input class="form-control mx-auto w-auto" id="password" name="password" placeholder="Password" type="password" required>
+            <input class="form-control mx-auto w-auto" id="password" name="password" placeholder="Password" type="password" requried>
         </div>
         <div class="mb-3">
-            <input class="form-control mx-auto w-auto" name="confirmation" placeholder="password (again)" type="password" requried>
+            <input class="form-control mx-auto w-auto" id="confirmation" name="confirmation" placeholder="password (again)" type="password" required>
         </div>
+        <p id="passwordError" style="color: red"></p>
         <div class="mb-3">
             <select class="form-select mx-auto w-auto" name="uniselect" required>
                 <option disabled selected value="">Pick Your University</option>
@@ -49,6 +50,7 @@
         </div>
 
 
-        <button class="btn btn-primary" type="submit">Register</button>
+        <button class="btn btn-primary"  id="registerBtn" type="submit">Register</button>
     </form>
+    <script src="script.js"></script>
 {% endblock %}
