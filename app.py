@@ -17,7 +17,7 @@ app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
 # Configure CS50 Library to use SQLite database
-db = SQL("sqlite:///finance.db") #change this!!!!
+db = SQL("sqlite:///unireviews.db") #change this!!!!
 
 @app.after_request
 def after_request(response):
@@ -107,7 +107,9 @@ def register():
         if password != confirm_password:
             return apology("Passwords do not match", 400)
         hashed_password = generate_password_hash(password)
+        university = request.form.get("uniselect")
         db.execute("INSERT INTO users (username, hash) VALUES(?,?)", username, hashed_password)
+        
         new_user_id = db.execute("SELECT id FROM users WHERE username = :username", username=username)
         session["user_id"] = new_user_id[0]['id']
         return redirect("/")

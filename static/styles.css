@@ -5,7 +5,29 @@ nav .navbar-brand
     font-family: "Jacquarda Bastarda 9", serif;
     font-weight: 400;
     font-style: normal;
-    
-    
-}
 
+}
+.background-image{
+    background-image: url(unnamed.jpg);
+}
+/*ANIMATOIN FOR HOVER ANIMATION ON NAV BAR*/
+.nav-link{
+    position: relative;
+}
+.nav-link::after{
+    transition: all 0.2s;
+    content: '';
+    opacity: 0;
+    height: 2px;
+    width: 100%;
+    background-color: greenyellow;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+.nav-link:hover::after{
+    opacity: 1;
+}
+.form-select{
+    width: 150px;
+}

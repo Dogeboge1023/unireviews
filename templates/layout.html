@@ -1,87 +1,126 @@
 <!DOCTYPE html>
 
 <html lang="en">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jacquarda+Bastarda+9&display=swap"
+      rel="stylesheet"
+    />
 
-    <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Jacquarda+Bastarda+9&display=swap" rel="stylesheet">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
 
-    
-        <meta charset="utf-8">
-        <meta name="viewport" content="initial-scale=1, width=device-width">
+    <!-- http://getbootstrap.com/docs/5.3/ -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
 
-        <!-- http://getbootstrap.com/docs/5.3/ -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <!-- titlebar logo -->
+    <link href="/static/favicon.ico" rel="icon" />
 
-        <!-- https://favicon.io/emoji-favicons/money-bag/ -->
-        <link href="/static/favicon.ico" rel="icon">
+    <link href="/static/styles.css" rel="stylesheet" />
 
-        <link href="/static/styles.css" rel="stylesheet">
+    <title>UniReviews: {% block title %}{% endblock %}</title>
+  </head>
 
-        <title>UniReviews: {% block title %}{% endblock %}</title>
+  <body>
+    <nav class=" background-image  navbar navbar-expand-md navbar-dark" >
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">UniReviews</a>
+        <button
+          aria-controls="navbar"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+          class="navbar-toggler"
+          data-bs-target="#navbar"
+          data-bs-toggle="collapse"
+          type="button"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbar">
+          {% if session["user_id"] %}
+          <ul class="navbar-nav me-auto mt-2">
+            <li class="nav-item">
+              <a class="nav-link" href="/edit1">edit1</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/edit2">edit2</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/edit3">edit3</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/edit4">edit4</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/edit5">edit5</a>
+            </li>
+          </ul>
+          <ul class="navbar-nav ms-auto mt-2">
+            <li class="nav-item">
+              <a class="nav-link" href="/logout">Log Out</a>
+            </li>
+          </ul>
+          {% else %}
+          <ul class="navbar-nav ms-auto mt-2">
+            <li class="nav-item">
+              <a class="nav-link" href="/register">Register</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/login">Log In</a>
+            </li>
+          </ul>
+          {% endif %}
+        </div>
+      </div>
+    </nav>
 
-    </head>
+    {% if get_flashed_messages() %}
+    <header>
+      <div class="alert alert-primary mb-0 text-center" role="alert">
+        {{ get_flashed_messages() | join(" ") }}
+      </div>
+    </header>
+    {% endif %}
 
-    <body>
+    <main class="container py-5 text-center">
+      {% block main %}{% endblock %}
+    </main>
 
-        <nav class="bg-light border navbar navbar-expand-md navbar-light">
-            <div class="container-fluid">
-                <a class="navbar-brand"  href="/">UniReviews</a>
-                <button aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbar" data-bs-toggle="collapse" type="button">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbar">
-                    {% if session["user_id"] %}
-                        <ul class="navbar-nav me-auto mt-2">
-                            <li class="nav-item"><a class="nav-link" href="/quote">RED1</a></li>
-                            <li class="nav-item"><a class="nav-link" href="/buy">RED2</a></li>
-                            <li class="nav-item"><a class="nav-link" href="/sell">RED3</a></li>
-                            <li class="nav-item"><a class="nav-link" href="/history">RED4</a></li>
-                            <li class="nav-item"><a class="nav-link" href="/deposit">RED5</a></li>
-                        </ul>
-                        <ul class="navbar-nav ms-auto mt-2">
-                            <li class="nav-item"><a class="nav-link" href="/logout">Log Out</a></li>
-                        </ul>
-                    {% else %}
-                        <ul class="navbar-nav ms-auto mt-2">
-                            <li class="nav-item"><a class="nav-link" href="/register">Register</a></li>
-                            <li class="nav-item"><a class="nav-link" href="/login">Log In</a></li>
-                        </ul>
-                    {% endif %}
-                </div>
-            </div>
-        </nav>
-
-        {% if get_flashed_messages() %}
-            <header>
-                <div class="alert alert-primary mb-0 text-center" role="alert">
-                    {{ get_flashed_messages() | join(" ") }}
-                </div>
-            </header>
-        {% endif %}
-
-        <main class="container py-5 text-center">
-            {% block main %}{% endblock %}
-        </main>
-
-        <footer class="mb-5">
-
-            <script>
-                document.addEventListener('DOMContentLoaded', function() {
-                    // Adapted from https://stackoverflow.com/a/10162353
-                    const html = '<!DOCTYPE ' +
-                    document.doctype.name +
-                    (document.doctype.publicId ? ' PUBLIC "' + document.doctype.publicId + '"' : '') +
-                    (!document.doctype.publicId && document.doctype.systemId ? ' SYSTEM' : '') +
-                    (document.doctype.systemId ? ' "' + document.doctype.systemId + '"' : '') +
-                    '>\n' + document.documentElement.outerHTML;
-                    document.querySelector('form[action="https://validator.w3.org/check"] > input[name="fragment"]').value = html;
-                });
-            </script>
-        </footer>
-
-    </body>
-
+    <footer class="mb-5">
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          // Adapted from https://stackoverflow.com/a/10162353
+          const html =
+            "<!DOCTYPE " +
+            document.doctype.name +
+            (document.doctype.publicId
+              ? ' PUBLIC "' + document.doctype.publicId + '"'
+              : "") +
+            (!document.doctype.publicId && document.doctype.systemId
+              ? " SYSTEM"
+              : "") +
+            (document.doctype.systemId
+              ? ' "' + document.doctype.systemId + '"'
+              : "") +
+            ">\n" +
+            document.documentElement.outerHTML;
+          document.querySelector(
+            'form[action="https://validator.w3.org/check"] > input[name="fragment"]'
+          ).value = html;
+        });
+      </script>
+    </footer>
+  </body>
 </html>
