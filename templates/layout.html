@@ -34,7 +34,7 @@
   </head>
 
   <body>
-    <nav class=" background-image  navbar navbar-expand-md navbar-dark" >
+    <nav class=" background-image  navbar navbar-expand-md navbar-light" >
       <div class="container-fluid">
         <a class="navbar-brand" href="/">UniReviews</a>
         <button
@@ -88,7 +88,7 @@
 
     {% if get_flashed_messages() %}
     <header>
-      <div class="alert alert-primary mb-0 text-center" role="alert">
+      <div class="alert alert-danger mb-0 text-center" role="alert">
         {{ get_flashed_messages() | join(" ") }}
       </div>
     </header>

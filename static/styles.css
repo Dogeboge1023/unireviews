@@ -8,7 +8,7 @@ nav .navbar-brand
 
 }
 .background-image{
-    background-image: url(unnamed.jpg);
+    background-color: #98FB98;
 }
 /*ANIMATOIN FOR HOVER ANIMATION ON NAV BAR*/
 .nav-link{
@@ -18,9 +18,9 @@ nav .navbar-brand
     transition: all 0.2s;
     content: '';
     opacity: 0;
-    height: 2px;
+    height: 3px;
     width: 100%;
-    background-color: greenyellow;
+    background-color: #181818;
     position: absolute;
     bottom: 0;
     left: 0;
@@ -34,3 +34,39 @@ nav .navbar-brand
 .red-star{
     color:red;
 }
+body{
+    background-color: #181818;
+}
+.form-color {
+
+    color: #d6d6d6;
+    border: 1px solid #eb6a5c;
+    background-color: #323232;
+    padding: 5px;
+  
+}
+.form-color::placeholder{
+    color: #d6d6d6;
+    text-align:center;
+}
+.form-color:focus{
+    outline: none;
+    border: 2px solid #1a863d;
+    background-color: #F2F2F2;
+    box-shadow: 0 0 5px rgba(176, 191, 26, 0.5);
+}
+.button-color {
+    background-color: #1a863d; /* Teal color for the button */
+    color: #FFFFFF; /* Text color for better readability */
+    padding: 10px 20px; /* Adjust padding as needed */
+    border: none;
+    cursor: pointer;
+  }
+  
+  .button-color:hover {
+    background-color: #176e34; /* Darker teal color on hover */
+  }
+  .button-color:disabled{
+    transition: all 0.2s;
+    background-color: #eb6a5c;
+  }

@@ -52,7 +52,8 @@ def login():
         if len(rows) != 1 or not check_password_hash(
             rows[0]["hash"], request.form.get("password")
         ):
-            return apology("invalid username and/or password", 403)
+            flash("Invalid Username/Password")
+            return render_template("login.html")
 
         # Remember which user has logged in
         session["user_id"] = rows[0]["id"]
@@ -73,7 +74,8 @@ def logout():
     session.clear()
 
     # Redirect user to login form
-    return redirect("/")
+    flash('logged out!')
+    return render_template("login.html")
 
 @app.errorhandler(404)
 def page_not_found(error):
@@ -87,19 +89,16 @@ def register():
         username = request.form.get("username")
         rows = db.execute("SELECT * FROM users WHERE username = :username", username=username)
         if len(rows) > 0:
-            return apology("Username is taken", 400)
+            flash("Username is taken", 'error')
+            return render_template("register.html")
         password = request.form.get("password") 
         confirm_password = request.form.get("confirmation")
-        if password != confirm_password: #replace this with js.
-            flash('passwords do not match', 'error' )
-            return redirect("/register")
         hashed_password = generate_password_hash(password)
         university = request.form.get("uniselect")
         db.execute("INSERT INTO users (username, hash,university) VALUES(?,?,?)", username, hashed_password,university)
         new_user_id = db.execute("SELECT id FROM users WHERE username = :username", username=username)
         session["user_id"] = new_user_id[0]['id']
         return redirect("/")
-
     return render_template("register.html")
 
 

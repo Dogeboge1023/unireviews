@@ -5,20 +5,20 @@
 {% endblock %}
 
 {% block main %}
+<script src="/static/script.js"></script>
     <form id="registerForm" action="/register" method="post">
         <div class="mb-3">
             <!--<label for="username">Username<span class="red-star">*</span></label>-->
-            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id ="username" placeholder="username" name="username" type="text" requried> 
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto form-color" id ="username" placeholder="Username" name="username" type="text" required> 
         </div>
         <div class="mb-3">
-            <input class="form-control mx-auto w-auto" id="password" name="password" placeholder="Password" type="password" requried>
+            <input class="form-control mx-auto w-auto form-color" id="password" name="password" placeholder="Password" type="password" required>
         </div>
         <div class="mb-3">
-            <input class="form-control mx-auto w-auto" id="confirmation" name="confirmation" placeholder="password (again)" type="password" required>
+            <input class="form-control mx-auto w-auto form-color" id="confirmation" name="confirmation" placeholder="Confirm Password" type="password" required>
         </div>
-        <p id="passwordError" style="color: red"></p>
         <div class="mb-3">
-            <select class="form-select mx-auto w-auto" name="uniselect" required>
+            <select class="form-select mx-auto w-auto form-color" id="select"name="uniselect" required>
                 <option disabled selected value="">Pick Your University</option>
                 <option>Agruni</option>
                 <option>ATSU</option>
@@ -46,11 +46,10 @@
                 <option>TSMU</option>
                 <option>TSU</option>
                 <option>UG</option>
+                <optoin>other</option>
             </select>
         </div>
-
-
-        <button class="btn btn-primary"  id="registerBtn" type="submit">Register</button>
+        <button class="button-color btn btn-primary"  id="registerBtn" type="submit">Register</button>
+        <div id="passwordError" class="text-danger"></div>
     </form>
-    <script src="script.js"></script>
 {% endblock %}
