@@ -8,6 +8,12 @@
       href="https://fonts.googleapis.com/css2?family=Jacquarda+Bastarda+9&display=swap"
       rel="stylesheet"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
 
     <meta charset="utf-8" />
     <meta name="viewport" content="initial-scale=1, width=device-width" />
@@ -52,7 +58,7 @@
           {% if session["user_id"] %}
           <ul class="navbar-nav me-auto mt-2">
             <li class="nav-item">
-              <a class="nav-link" href="/edit1">edit1</a>
+              <a class="nav-link" href="/writeyourreview">Write Your Review</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/edit2">edit2</a>
@@ -69,16 +75,22 @@
           </ul>
           <ul class="navbar-nav ms-auto mt-2">
             <li class="nav-item">
-              <a class="nav-link" href="/logout">Log Out</a>
+              <a class="nav-link" href="/logout">
+                <img src="static/logout.png" alt="Log Out" class="logout-button">
+              </a>
             </li>
           </ul>
           {% else %}
           <ul class="navbar-nav ms-auto mt-2">
             <li class="nav-item">
-              <a class="nav-link" href="/register">Register</a>
+              <a class="nav-link" href="/register">
+                <img src="static/register.png" alt="Register" class="logout-button">
+              </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/login">Log In</a>
+              <a class="nav-link" href="/login">
+                <img src="static/login.png" alt="Log In" class="logout-button">
+              </a>
             </li>
           </ul>
           {% endif %}

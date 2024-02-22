@@ -101,6 +101,10 @@ def register():
         return redirect("/")
     return render_template("register.html")
 
+@app.route("/writeyourreview", methods=["GET","POST"])
+def writeyourreview():
+    return render_template("write_your_review")
+
 
 
 

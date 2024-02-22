@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Write Your Review
+{% endblock %}
+
+{% block main %}
+<div class="font-color big-text">
+    <p>Review Your University</p>
+</div>
+<div class="second-text-font second-text-size">
+    <p>Unfiletered Student Reviews</p>
+</div>
+<form id="reviewForm">
+    <label for="university">Select University:</label>
+    <select id="university" name="university">
+      <!-- Add your list of universities here -->
+      <option value="university1">University 1</option>
+      <option value="university2">University 2</option>
+      <!-- Add more options as needed -->
+    </select>
+
+    <label for="review">Write your review:</label>
+    <textarea id="review" name="review" rows="4" placeholder="Enter your review here..."></textarea>
+
+    <button type="button" onclick="submitReview()">Submit Review</button>
+  </form>
+{% endblock %}
