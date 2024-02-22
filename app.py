@@ -103,7 +103,7 @@ def register():
 
 @app.route("/writeyourreview", methods=["GET","POST"])
 def writeyourreview():
-    return render_template("write_your_review")
+    return render_template("write_your_review.html")
 
 
 

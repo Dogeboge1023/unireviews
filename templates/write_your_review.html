@@ -9,20 +9,44 @@
     <p>Review Your University</p>
 </div>
 <div class="second-text-font second-text-size">
-    <p>Unfiletered Student Reviews</p>
+    <p>Write your opinion about your university</p>
 </div>
 <form id="reviewForm">
-    <label for="university">Select University:</label>
-    <select id="university" name="university">
-      <!-- Add your list of universities here -->
-      <option value="university1">University 1</option>
-      <option value="university2">University 2</option>
-      <!-- Add more options as needed -->
-    </select>
-
-    <label for="review">Write your review:</label>
-    <textarea id="review" name="review" rows="4" placeholder="Enter your review here..."></textarea>
-
-    <button type="button" onclick="submitReview()">Submit Review</button>
-  </form>
+      <select class="form-select mx-auto w-auto form-color-2 " id="selectwrite"name="uniselectwrite" required>
+      <option disabled selected value="">Pick  Univeristy To Review</option>
+      <option>Agruni</option>
+      <option>ATSU</option>
+      <option>ALTE</option>
+      <option>Art Academy</option>
+      <option>BSU</option>
+      <option>BTU</option>
+      <option>CIU</option>
+      <option>Caucasus University</option>
+      <option>DAUG</option>
+      <option>European University</option>
+      <option>FREEUIN</option>
+      <option>GAU</option>
+      <option>GTU/STU</option>
+      <option>GIPA</option>
+      <option>GRUNI</option>
+      <option>IBSU</option>
+      <option>KIU</option>
+      <option>IliaUni</option>
+      <option>SOU</option>
+      <option>SEU</option>
+      <option>SABAUNI</option>
+      <option>SANGU</option>
+      <option>TAFU</option>
+      <option>TSMU</option>
+      <option>TSU</option>
+      <option>UG</option>
+      <optoin>other</option>
+  </select>
+  <div class="mb-3">
+  <label class="defactomargin"></label>
+  <textarea rows="1" cols="15" class="form-control mx-auto w-auto" placeholder="Title" id="titlewrite" name="titlewrite" maxlength="21"></textarea>
+  <textarea rows="8" cols="40" class="form-control mx-auto w-auto my-2" placeholder="Review" id="reviewwrite" name="reviewwrite"></textarea>
+  </div> 
+  <button class="button-color btn btn-primary"  id="registerBtn" type="submit">Register</button>
+</form>
 {% endblock %}
