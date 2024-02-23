@@ -96,6 +96,7 @@ def register():
         hashed_password = generate_password_hash(password)
         university = request.form.get("uniselect")
         db.execute("INSERT INTO users (username, hash,university) VALUES(?,?,?)", username, hashed_password,university)
+        
         new_user_id = db.execute("SELECT id FROM users WHERE username = :username", username=username)
         session["user_id"] = new_user_id[0]['id']
         return redirect("/")
@@ -103,6 +104,21 @@ def register():
 
 @app.route("/writeyourreview", methods=["GET","POST"])
 def writeyourreview():
+    if request.method == "POST":
+        picker = request.form.get("uniselectwrite")
+        title= request.form.get("titlewrite")
+        review = request.form.get("reviewwrite")
+        if 'rating' in request.form:
+            rating = request.form.get('rating')
+        else:
+            rating = 0
+        if 'checkbox' in request.form:
+            checkbox = request.form.get("checkbox")
+        else:
+            checkbox = 'no'
+        db.execute("INSERT INTO reviews (user_id, picked_university, title, review, rating, student_yes_no) VALUES (?, ?, ?, ?, ?, ?)",session["user_id"], picker, title, review, rating, checkbox)
+        flash("Submitted")
+        return redirect("/")
     return render_template("write_your_review.html")
 
 

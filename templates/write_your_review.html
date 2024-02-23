@@ -5,6 +5,8 @@
 {% endblock %}
 
 {% block main %}
+<script src="/static/script.js"></script>
+<form action="/writeyourreview" method="POST">
 <div class="font-color big-text">
     <p>Review Your University</p>
 </div>
@@ -24,7 +26,7 @@
       <option>Caucasus University</option>
       <option>DAUG</option>
       <option>European University</option>
-      <option>FREEUIN</option>
+      <option>Freeuni</option>
       <option>GAU</option>
       <option>GTU/STU</option>
       <option>GIPA</option>
@@ -40,13 +42,40 @@
       <option>TSMU</option>
       <option>TSU</option>
       <option>UG</option>
-      <optoin>other</option>
+      <option>other</option>
   </select>
   <div class="mb-3">
-  <label class="defactomargin"></label>
-  <textarea rows="1" cols="15" class="form-control mx-auto w-auto" placeholder="Title" id="titlewrite" name="titlewrite" maxlength="21"></textarea>
-  <textarea rows="8" cols="40" class="form-control mx-auto w-auto my-2" placeholder="Review" id="reviewwrite" name="reviewwrite"></textarea>
-  </div> 
-  <button class="button-color btn btn-primary"  id="registerBtn" type="submit">Register</button>
+    <!--input boxes for title and review-->
+  <label class="label1 my-3">Title of your review</label>
+  <textarea  class="title-size title form-control mx-auto  my-2" id="titlewrite" name="titlewrite" minlength="1" maxlength="22" required></textarea>
+  <label class="label1 my-1">Your review</label>
+  <textarea  class="review-size title form-control mx-auto  my-2"  id="reviewwrite" minlength="5"name="reviewwrite" required></textarea> 
+  </div>
+  <!--rating system-->
+  <div class="rating">
+    <input type="radio" id="star5" name="rating" value="5">
+    <label for="star5"></label>
+    <input type="radio" id="star4" name="rating" value="4">
+    <label for="star4"></label>
+    <input type="radio" id="star3" name="rating" value="3">
+    <label for="star3"></label>
+    <input type="radio" id="star2" name="rating" value="2">
+    <label for="star2"></label>
+    <input type="radio" id="star1" name="rating" value="1">
+    <label for="star1"></label>
+  </div>
+  <!--checkbox if is student of that uni-->
+  <div class="">
+    <input class="form-check-input" type="checkbox" value="yes" name="checkbox" id="flexCheckDefault"> <!--that value is definete security issue but oh well TO BE TESTED!-->
+    <label class="mb-2 checkbox form-check-label" for="flexCheckDefault">
+    Are you student of this university
+    </label>
+  </div>
+  <!--BUTTON-->
+  <form id="reviewbutton" method="post" action="/writeyourreview">
+  <button class="button-color btn btn-primary"  id="sumbmitreview" type="submit">Send Out</button>
+  </form>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+</form>
 </form>
 {% endblock %}

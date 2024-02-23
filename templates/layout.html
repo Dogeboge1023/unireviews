@@ -40,7 +40,7 @@
   </head>
 
   <body>
-    <nav class=" background-image  navbar navbar-expand-md navbar-light" >
+    <nav class=" background-image  navbar navbar-expand-md navbar-dark" >
       <div class="container-fluid">
         <a class="navbar-brand" href="/">UniReviews</a>
         <button
@@ -76,7 +76,7 @@
           <ul class="navbar-nav ms-auto mt-2">
             <li class="nav-item">
               <a class="nav-link" href="/logout">
-                <img src="static/logout.png" alt="Log Out" class="logout-button">
+                <img src="static/whitelogout.png" alt="Log Out" class="logout-button">
               </a>
             </li>
           </ul>
@@ -84,12 +84,12 @@
           <ul class="navbar-nav ms-auto mt-2">
             <li class="nav-item">
               <a class="nav-link" href="/register">
-                <img src="static/register.png" alt="Register" class="logout-button">
+                <img src="static/whitereg.png" alt="Register" class="logout-button">
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/login">
-                <img src="static/login.png" alt="Log In" class="logout-button">
+                <img src="static/whitelogin.png" alt="Log In" class="logout-button">
               </a>
             </li>
           </ul>
@@ -100,7 +100,7 @@
 
     {% if get_flashed_messages() %}
     <header>
-      <div class="alert alert-danger mb-0 text-center" role="alert">
+      <div class="alert alert-warning alert-dismissible  show mb-0 text-center" role="alert">
         {{ get_flashed_messages() | join(" ") }}
       </div>
     </header>
@@ -135,4 +135,5 @@
       </script>
     </footer>
   </body>
+  
 </html>
