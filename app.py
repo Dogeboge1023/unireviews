@@ -31,10 +31,51 @@ def after_request(response):
 @app.route("/")
 @login_required
 def index():
-    return render_template("index.html")
+    rows = db.execute("SELECT id, user_id, picked_university, title, review, rating FROM reviews")
+    
+    review_data = [] 
+    
+    if not rows:
+        return render_template("index.html")
+
+    for row in rows:
+        id = row['id']
+        user_id = row['user_id']
+        picked_university = row['picked_university']
+        title = row['title']
+        review = row['review']
+        rating = row['rating']
+        rating = rating
+        repeats = db.execute("SELECT university FROM users WHERE id=?", user_id)
+        
+        for repeat in repeats:
+            actual_university = repeat['university']
+            if picked_university != actual_university:
+                status = "Not a student at this university."
+            else:
+                status = "Student at this university."
+
+                
+        username = db.execute("SELECT username FROM users WHERE id=?", user_id)
+        name = username[0]['username']
+        
+        selected_rating = rating
+
+        review_data.append({
+            'id': id,
+            'title': title,
+            'picked_university': picked_university,
+            'review': review,
+            'status': status,
+            'name': name,
+            'selected_rating': selected_rating,
+        })
+
+    return render_template("index.html", reviews=review_data,  selected_rating=selected_rating)
 
 
-@app.route("/login", methods=["GET", "POST"])  # completed log in but not by me
+
+@app.route("/login", methods=["GET", "POST"])
 def login():
     """Log user in"""
 
@@ -112,11 +153,7 @@ def writeyourreview():
             rating = request.form.get('rating')
         else:
             rating = 0
-        if 'checkbox' in request.form:
-            checkbox = request.form.get("checkbox")
-        else:
-            checkbox = 'no'
-        db.execute("INSERT INTO reviews (user_id, picked_university, title, review, rating, student_yes_no) VALUES (?, ?, ?, ?, ?, ?)",session["user_id"], picker, title, review, rating, checkbox)
+        db.execute("INSERT INTO reviews (user_id, picked_university, title, review, rating) VALUES (?, ?, ?, ?, ?)",session["user_id"], picker, title, review, rating)
         flash("Submitted")
         return redirect("/")
     return render_template("write_your_review.html")

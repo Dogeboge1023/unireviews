@@ -5,10 +5,39 @@
 {% endblock %}
 
 {% block main %}
-<div class="font-color big-text">
+<script src="/static/script.js"></script>
+
+<div class="font-color big-text2">
     <p>UniReviews</p>
 </div>
-<div class="second-text-font second-text-size">
+<div class="unibold second-text-font second-text-size">
     <p>Unfiletered Student Reviews</p>
+<body class="bodydesign"> 
 </div>
+
+{% for review in reviews %}
+    <div class="mb-2 reviewtext">
+        <p class="titlebold">{{ review.title }}</p>
+        <p class="uniopacity togetherp">uni:</p><p class="togetherp unibold">{{ review.picked_university}}</p> 
+        <p>{{ review.review}}</p>
+        <p>{{ review.status }}</p>
+        <div class="rating1">
+            <input  type="radio" id="star5" name="rating" disabled value="5" {% if selected_rating == 5 %} checked {% endif %}>
+            <label for="star5" class="cock {% if review.selected_rating >= 5 %}selected{% endif %}"></label>
+            <input disabled type="radio" id="star4" name="rating" value="4" {% if selected_rating == 4 %} checked {% endif %}>
+            <label for="star4" class="cock {% if review.selected_rating >= 4 %}selected{% endif %}"></label>
+            <input type="radio" id="star3" disabled name="rating" value="3" {% if selected_rating == 3 %} checked {% endif %}>
+            <label for="star3" class="cock {% if review.selected_rating >= 3 %}selected{% endif %}"></label>
+            <input type="radio" id="star2" disabled name="rating" value="2" {% if selected_rating == 2 %} checked {% endif %}>
+            <label for="star2" class="cock {% if review.selected_rating >= 2 %}selected{% endif %}"></label>
+            <input type="radio" id="star1" disabled name="rating" value="1" {% if selected_rating == 1 %} checked {% endif %}>
+            <label for="star1" class="cock {% if review.selected_rating >= 1 %}selected{% endif %}"></label>
+        </div>
+        <p class="author">author:{{ review.name }}</p> 
+        
+    </div>    
+{% endfor %}
+
+</body>
+
 {% endblock %}

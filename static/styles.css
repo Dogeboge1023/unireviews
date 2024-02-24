@@ -26,7 +26,8 @@ nav .navbar-brand
     height: 3px;
     width: 100%;
     background-color: #98FB98;
-    background-color: #6D4886;
+    background-color: #0f2f46;
+    border-radius: 13px;
     position: absolute;
     bottom: 0;
     left: 0;
@@ -98,6 +99,15 @@ body{
         font-style: normal;
         color:#F2F2F2;
 }  
+.big-text2{
+    font-size:90px
+}
+@media only screen and (max-width: 767px){
+    .big-text2{
+        font-size: 59px;
+    }
+}
+.secon
 .second-text-size{
     font-size: 20px;
 }
@@ -216,4 +226,81 @@ textarea {
         width: 220px;
         height: 50px;
     }
+}
+.reviewtext{
+    color: #ffffff;
+    width: 700px; 
+    margin: 0 auto; 
+    padding: 20px;
+    border: 3px dashed rgb( 255,224,60);
+    border-radius: 5px; 
+    background-color: #323232;
+    overflow-wrap: break-word;
+}
+@media only screen and (max-width: 767px){
+    .reviewtext{
+        width:350px;
+    }
+}
+.bodydesign{
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+.reviewtext p {
+    margin: 5px 0; 
+  }
+  
+
+.titlebold{
+    font-family: "Poppins", sans-serif;
+    font-weight: bold;
+    font-style: normal;
+    color: #ffffff;
+    font-size: 20px;
+}
+.togetherp{
+    display: inline-block;
+    margin: 0 10px;
+}
+.unibold{
+    font-size: 17px;
+    font-family: "IBM Plex Mono", monospace;
+    font-weight: 500;
+    font-style: normal;
+}
+.uniopacity{
+    opacity: 0.72;
+}
+.rating1 {
+    unicode-bidi: bidi-override;
+    font-size: 2em;
+    direction: rtl;
+  }
+  
+  input[type="radio"] {
+    display: none; /* Hide radio buttons visually */
+  }
+  
+/* Ensure labels are displayed inline-block with visual cues for interactivity */
+.cock {
+    display: inline-block;
+    cursor: default; /* Indicate interactivity */
+  }
+  
+  /* Style the star icons */
+  .cock:before {
+    content: '\2605'; /* Unicode character for a star */
+    font-size: 2em;
+    color: #ddd; /* Default unselected star color */
+  }
+  
+.rating1 label.selected:before {
+    color: gold; /* Filled star color */
+}
+  .rating1 input[type="radio"]:checked + label:before {
+    color: gold; /* Filled star color */
+  }
+.author{
+    text-align: left;
 }

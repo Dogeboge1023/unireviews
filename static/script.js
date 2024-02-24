@@ -30,3 +30,4 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('username').addEventListener('input', checkPasswordMatch);
 });
 
+
