@@ -14,27 +14,62 @@
     <p>Unfiletered Student Reviews</p>
 <body class="bodydesign"> 
 </div>
+<form class="mb-2" method="GET" action="{{ url_for('index') }}" id="reviewForm"> <!--man what is this-->
+    <select class=" custom-select my-3 form-select mx-auto w-auto form-color-3 " id="university"name="university" onchange="this.form.submit()">
+        <option value="" {% if selected_university == "" or selected_university == None %}selected{% endif %}>All Universities</option>
+        <option value="Agruni" {% if selected_university == "Agruni" %}selected{% endif %}>Agruni</option>
+        <option value="ATSU" {% if selected_university == "ATSU" %}selected{% endif %}>ATSU</option>
+        <option value="ALTE" {% if selected_university == "ALTE" %}selected{% endif %} >ALTE</option>
+        <option value="Art+Academy" {% if selected_university == "Art+Academy" %}selected{% endif %} >Art Academy</option>
+        <option value="BSU" {% if selected_university == "BSU" %}selected{% endif %} >BSU</option>
+        <option value="BTU" {% if selected_university == "BTU" %}selected{% endif %} >BTU</option>
+        <option value="CIU" {% if selected_university == "CIU" %}selected{% endif %} >CIU</option>
+        <option value="Caucasus+University" {% if selected_university == "Caucasus+University" %}selected{% endif %} >Caucasus University</option>
+        <option value="DAUG" {% if selected_university == "DAUG" %}selected{% endif %} >DAUG</option>
+        <option value="European+University" {% if selected_university == "European+University" %}selected{% endif %}>European University</option>
+        <option value="Freeuni" {% if selected_university == "Freeuni" %}selected{% endif %} >Freeuni</option>
+        <option value="GAU" {% if selected_university == "GAU" %}selected{% endif %} >GAU</option>
+        <option value="GTU/STU" {% if selected_university == "GTU/STU" %}selected{% endif %} >GTU/STU</option>
+        <option value="GIPA" {% if selected_university == "GIPA" %}selected{% endif %} >GIPA</option>
+        <option value="GRUNI" {% if selected_university == "GRUNI" %}selected{% endif %} >GRUNI</option>
+        <option value="IBSU" {% if selected_university == "IBSU" %}selected{% endif %} >IBSU</option>
+        <option value="KIU" {% if selected_university == "KIU" %}selected{% endif %} >KIU</option>
+        <option value="IliaUni" {% if selected_university == "IliaUni" %}selected{% endif %} >IliaUni</option>
+        <option value="SOU" {% if selected_university == "SOU" %}selected{% endif %} >SOU</option>
+        <option value="SEU" {% if selected_university == "SEU" %}selected{% endif %} >SEU</option>
+        <option value="SABAUNI" {% if selected_university == "SABAUNI" %}selected{% endif %} >SABAUNI</option>
+        <option value="SANGU" {% if selected_university == "SANGU" %}selected{% endif %} >SANGU</option>
+        <option value="TAFU" {% if selected_university == "TAFU" %}selected{% endif %} >TAFU</option>
+        <option value="TSMU" {% if selected_university == "TSMU" %}selected{% endif %} >TSMU</option>
+        <option value="TSU" {% if selected_university == "TSU" %}selected{% endif %} >TSU</option>
+        <option value="UG" {% if selected_university == "UG" %}selected{% endif %} >UG</option>
+        <option value="other" {% if selected_university == "other" %}selected{% endif %} >other</option>
+</select>
+</form>
 
 {% for review in reviews %}
     <div class="mb-2 reviewtext">
-        <p class="titlebold">{{ review.title }}</p>
+        <p class="date-align">{{ review.submission_time }}</p>
+        <p class="mainreviewtextfont titlebold">{{ review.title }}</p>
         <p class="uniopacity togetherp">uni:</p><p class="togetherp unibold">{{ review.picked_university}}</p> 
-        <p>{{ review.review}}</p>
-        <p>{{ review.status }}</p>
+        <p class="mainreviewtextfont">{{ review.review}}</p>
         <div class="rating1">
             <input  type="radio" id="star5" name="rating" disabled value="5" {% if selected_rating == 5 %} checked {% endif %}>
-            <label for="star5" class="cock {% if review.selected_rating >= 5 %}selected{% endif %}"></label>
+            <label for="star5" class="xstars {% if review.selected_rating >= 5 %}selected{% endif %}"></label>
             <input disabled type="radio" id="star4" name="rating" value="4" {% if selected_rating == 4 %} checked {% endif %}>
-            <label for="star4" class="cock {% if review.selected_rating >= 4 %}selected{% endif %}"></label>
+            <label for="star4" class="xstars {% if review.selected_rating >= 4 %}selected{% endif %}"></label>
             <input type="radio" id="star3" disabled name="rating" value="3" {% if selected_rating == 3 %} checked {% endif %}>
-            <label for="star3" class="cock {% if review.selected_rating >= 3 %}selected{% endif %}"></label>
+            <label for="star3" class="xstars {% if review.selected_rating >= 3 %}selected{% endif %}"></label>
             <input type="radio" id="star2" disabled name="rating" value="2" {% if selected_rating == 2 %} checked {% endif %}>
-            <label for="star2" class="cock {% if review.selected_rating >= 2 %}selected{% endif %}"></label>
+            <label for="star2" class="xstars {% if review.selected_rating >= 2 %}selected{% endif %}"></label>
             <input type="radio" id="star1" disabled name="rating" value="1" {% if selected_rating == 1 %} checked {% endif %}>
-            <label for="star1" class="cock {% if review.selected_rating >= 1 %}selected{% endif %}"></label>
+            <label for="star1" class="xstars {% if review.selected_rating >= 1 %}selected{% endif %}"></label>
         </div>
-        <p class="author">author:{{ review.name }}</p> 
-        
+        <div class="review-footer">
+        <p class="author sizefont">Author:{{ review.name }}</p> 
+        <p class="sizefont status">{{ review.status }}</p>
+        </div>
+
     </div>    
 {% endfor %}
 

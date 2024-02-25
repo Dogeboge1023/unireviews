@@ -4,6 +4,7 @@ from cs50 import SQL
 from flask import Flask, flash, redirect, render_template, request, session
 from flask_session import Session
 from werkzeug.security import check_password_hash, generate_password_hash
+from datetime import datetime
 
 from helpers import apology, login_required
 
@@ -28,10 +29,19 @@ def after_request(response):
     return response
 
 
-@app.route("/")
+@app.route("/", methods=["GET"])
 @login_required
 def index():
-    rows = db.execute("SELECT id, user_id, picked_university, title, review, rating FROM reviews")
+    selected_university = request.args.get('university')
+    
+    if selected_university:
+        rows = db.execute("SELECT id, user_id, picked_university, title, review, rating, submission_time FROM reviews WHERE picked_university=?", selected_university)
+        if not rows:
+            flash("No reviews for this university")
+            return redirect("/")
+    else:
+        rows = db.execute("SELECT id, user_id, picked_university, title, review, rating, submission_time FROM reviews")
+
     
     review_data = [] 
     
@@ -45,15 +55,16 @@ def index():
         title = row['title']
         review = row['review']
         rating = row['rating']
-        rating = rating
+        time = row['submission_time']
+        time = datetime.strptime(time, "%Y-%m-%d %H:%M:%S").strftime("%d/%m/%Y")
         repeats = db.execute("SELECT university FROM users WHERE id=?", user_id)
         
         for repeat in repeats:
             actual_university = repeat['university']
             if picked_university != actual_university:
-                status = "Not a student at this university."
+                status = "Not a student at this university"
             else:
-                status = "Student at this university."
+                status = "Student at this university"
 
                 
         username = db.execute("SELECT username FROM users WHERE id=?", user_id)
@@ -69,9 +80,10 @@ def index():
             'status': status,
             'name': name,
             'selected_rating': selected_rating,
+            'submission_time': time,
         })
 
-    return render_template("index.html", reviews=review_data,  selected_rating=selected_rating)
+    return render_template("index.html", reviews=review_data,  selected_rating=selected_rating,selected_university=selected_university)
 
 
 
@@ -144,6 +156,7 @@ def register():
     return render_template("register.html")
 
 @app.route("/writeyourreview", methods=["GET","POST"])
+@login_required
 def writeyourreview():
     if request.method == "POST":
         picker = request.form.get("uniselectwrite")
@@ -153,12 +166,8 @@ def writeyourreview():
             rating = request.form.get('rating')
         else:
             rating = 0
-        db.execute("INSERT INTO reviews (user_id, picked_university, title, review, rating) VALUES (?, ?, ?, ?, ?)",session["user_id"], picker, title, review, rating)
+        current_time = datetime.now()
+        db.execute("INSERT INTO reviews (user_id, picked_university, title, review, rating, submission_time) VALUES (?, ?, ?, ?, ?, ?)",session["user_id"], picker, title, review, rating,current_time)
         flash("Submitted")
         return redirect("/")
     return render_template("write_your_review.html")
-
-
-
-
-

@@ -8,11 +8,11 @@ nav .navbar-brand
 
 }
 .background-image{
-    background: rgba( 154, 255, 107, 0.49 );
+    background: rgba( 129, 255, 133, 0.5 );
     box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
     backdrop-filter: blur( 0px );
     -webkit-backdrop-filter: blur( 0px );
-    border-radius: 13px;
+    border-radius: 10px;
     border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
 /*ANIMATOIN FOR HOVER ANIMATION ON NAV BAR*/
@@ -26,8 +26,8 @@ nav .navbar-brand
     height: 3px;
     width: 100%;
     background-color: #98FB98;
-    background-color: #0f2f46;
-    border-radius: 13px;
+    background-color: #abc4a3;
+    border-radius: 500px;
     position: absolute;
     bottom: 0;
     left: 0;
@@ -36,7 +36,7 @@ nav .navbar-brand
     opacity: 1;
 }
 .form-select{
-    width: 150px;
+    width: 170px;
 }
 .red-star{
     color:red;
@@ -47,7 +47,7 @@ body{
 .form-color {
 
     color: #d6d6d6;
-    border: 1px solid #eb6a5c;
+    border: 2px solid rgb(255, 80, 80); /*try dashed here and maybe change color to something else like these: rgb(255, 80, 80); rgb(255, 129, 133);*/
     background-color: #323232;
     padding: 5px;
   
@@ -58,7 +58,7 @@ body{
 }
 .form-color:focus{
     outline: none;
-    border: 2px solid #1a863d;
+    border: 2px groove #1a863d;
     background-color: #F2F2F2;
     box-shadow: 0 0 5px rgba(176, 191, 26, 0.5);
     background-color: #323232;
@@ -133,12 +133,10 @@ body{
 }
 .form-color-2{
     color: #d6d6d6;
-    border:  3px dashed #98FB98;
+    border:  3px dashed rgb(129, 255, 133);;
     background-color: #323232;
     padding: 5px;
 }
-.form-color-2:focus{
-    outline: none;}
 textarea {
   font-size: 0.8rem;
   letter-spacing: 1px;
@@ -164,7 +162,7 @@ textarea {
 .title{
     background-color: #323232;
     color: #ffffff;
-    border:  3px dashed #98FB98;
+    border:  3px dashed rgb(129, 255, 133);
 }
 .title:focus{
     background-color: #323232;
@@ -232,7 +230,7 @@ textarea {
     width: 700px; 
     margin: 0 auto; 
     padding: 20px;
-    border: 3px dashed rgb( 255,224,60);
+    border: 3px dashed #fff176; 
     border-radius: 5px; 
     background-color: #323232;
     overflow-wrap: break-word;
@@ -250,14 +248,10 @@ textarea {
 .reviewtext p {
     margin: 5px 0; 
   }
-  
-
 .titlebold{
-    font-family: "Poppins", sans-serif;
     font-weight: bold;
-    font-style: normal;
     color: #ffffff;
-    font-size: 20px;
+    font-size: 23px;
 }
 .togetherp{
     display: inline-block;
@@ -283,13 +277,13 @@ textarea {
   }
   
 /* Ensure labels are displayed inline-block with visual cues for interactivity */
-.cock {
+.xstars {
     display: inline-block;
     cursor: default; /* Indicate interactivity */
   }
   
   /* Style the star icons */
-  .cock:before {
+  .xstars:before {
     content: '\2605'; /* Unicode character for a star */
     font-size: 2em;
     color: #ddd; /* Default unselected star color */
@@ -303,4 +297,49 @@ textarea {
   }
 .author{
     text-align: left;
+    font-family: "IBM Plex Mono", monospace;
+    font-weight: 500;
+    font-style: normal;
+    opacity: 0.80;
 }
+.status{
+    text-align:right;
+    font-family: "IBM Plex Mono", monospace;
+    font-weight: 500;
+    font-style: normal;
+    opacity: 0.80;
+}
+.review-footer {
+    display: flex;
+    justify-content: space-between;
+}
+.mainreviewtextfont {
+    font-family: "Roboto", sans-serif;
+    font-style: normal;
+  }
+.sizefont{
+    font-size: 15px;
+}
+@media only screen and (max-width: 600px) {
+    .review-footer {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+.date-align{
+    text-align: left;
+    opacity: 0.70;
+    font-family: "VT323", monospace;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 23px;
+}
+.form-color-3{
+    color: #d6d6d6;
+    border:  3px dashed rgb(129, 255, 133);
+    background-color: #323232;
+    padding: 5px;
+}
+.custom-select {
+    background: #323232 url("dropdown.svg")no-repeat right .75rem center/19px 25px !important;
+  }
