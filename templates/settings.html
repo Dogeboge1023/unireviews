@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Settings
+{% endblock %}
+
+{% block main %}
+<script src="/static/script.js"></script>
+<form action="/settings" method="POST">
+    <form>
+        <div class="form-group">
+            <input type="password" class="form-control" name="old_pw_input" id="old_pw_input" placeholder="old Password">
+          </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+{% endblock %}
