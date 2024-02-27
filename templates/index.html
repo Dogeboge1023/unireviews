@@ -14,6 +14,7 @@
     <p>Unfiletered Student Reviews</p>
 <body class="bodydesign"> 
 </div>
+<!--source:github copilot helped me fix this code-->
 <form class="mb-2" method="GET" action="{{ url_for('index') }}" id="reviewForm"> <!--man what is this-->
     <select class=" custom-select my-3 form-select mx-auto w-auto form-color-3 " id="university"name="university" onchange="this.form.submit()">
         <option value="" {% if selected_university == "" or selected_university == None %}selected{% endif %}>All Universities</option>
