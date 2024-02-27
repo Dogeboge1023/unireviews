@@ -144,6 +144,7 @@ def register():
         if len(rows) > 0:
             flash("Username is taken", 'error')
             return render_template("register.html")
+        
         password = request.form.get("password") 
         confirm_password = request.form.get("confirmation")
         hashed_password = generate_password_hash(password)
