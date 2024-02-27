@@ -7,10 +7,18 @@
 {% block main %}
 <script src="/static/script.js"></script>
 <form action="/settings" method="POST">
-    <form>
-        <div class="form-group">
-            <input type="password" class="form-control" name="old_pw_input" id="old_pw_input" placeholder="old Password">
-          </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+    <div class="font-color big-text2">
+        <p>Settings</p>
+    </div>
+        <div class="mb-3">
+            <input class="form-control mx-auto w-auto form-color" name="old_pw_input" id="old_pw_input" placeholder="Old Password" type="password">
+        </div>
+        <div class="mb-3">
+            <input class="form-control mx-auto w-auto form-color" name="new_pw_input" id="new_pw_input" placeholder="New Password" type="password" minlength="8"> 
+        </div>
+        <div class="mb-3">
+            <input class="form-control mx-auto w-auto form-color" name="new_pw_input_confirm" id="new_pw_input_confirm" placeholder="Confirm New Password" type="password" minlength="8"> 
+        </div>
+        <button class="button-color btn btn-primary" type="submit" onclick="return confirm('Are you sure you want to change your password?')">Change Password</button>
     </form>
 {% endblock %}

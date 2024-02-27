@@ -171,3 +171,24 @@ def writeyourreview():
         flash("Submitted")
         return redirect("/")
     return render_template("write_your_review.html")
+
+@app.route("/settings", methods=["GET","POST"])
+@login_required
+def settings():
+    if request.method == "POST":
+        old_pw = db.execute("SELECT hash FROM users WHERE id=?", session["user_id"])
+        old_pw = old_pw[0]['hash']
+        old_pw_input = request.form.get("old_pw_input")
+        new_pw = request.form.get("new_pw_input")
+        new_pw_confirm = request.form.get("new_pw_input_confirm")
+        if new_pw != new_pw_confirm:
+            flash("new passwords aint matching")
+            return redirect("/settings")
+        new_pw_hash = generate_password_hash(new_pw)
+        if check_password_hash(old_pw,old_pw_input):
+            db.execute("UPDATE users SET hash = ? WHERE id = ?", new_pw_hash, session["user_id"])
+        else:
+            flash("Wrong old password")
+            return redirect("/settings")
+        
+    return render_template("settings.html")
