@@ -35,12 +35,12 @@ def index():
     selected_university = request.args.get('university')
     
     if selected_university:
-        rows = db.execute("SELECT id, user_id, picked_university, title, review, rating, submission_time FROM reviews WHERE picked_university=?", selected_university)
+        rows = db.execute("SELECT id, user_id, picked_university, title, review, rating, submission_time FROM reviews WHERE picked_university=? ORDER BY submission_time DESC", selected_university)
         if not rows:
             flash("No reviews for this university")
             return redirect("/")
     else:
-        rows = db.execute("SELECT id, user_id, picked_university, title, review, rating, submission_time FROM reviews")
+        rows = db.execute("SELECT id, user_id, picked_university, title, review, rating, submission_time FROM reviews ORDER BY submission_time DESC")
 
     
     review_data = [] 
@@ -112,6 +112,7 @@ def login():
         session["user_id"] = rows[0]["id"]
 
         # Redirect user to home page
+        flash("Logged in!")
         return redirect("/")
 
     # User reached route via GET (as by clicking a link or via redirect)
@@ -153,6 +154,7 @@ def register():
         
         new_user_id = db.execute("SELECT id FROM users WHERE username = :username", username=username)
         session["user_id"] = new_user_id[0]['id']
+        flash("Registered!")
         return redirect("/")
     return render_template("register.html")
 
@@ -183,11 +185,13 @@ def settings():
         new_pw = request.form.get("new_pw_input")
         new_pw_confirm = request.form.get("new_pw_input_confirm")
         if new_pw != new_pw_confirm:
-            flash("new passwords aint matching")
+            flash("The new passwords you entered do not match. Please try again.")
             return redirect("/settings")
         new_pw_hash = generate_password_hash(new_pw)
         if check_password_hash(old_pw,old_pw_input):
             db.execute("UPDATE users SET hash = ? WHERE id = ?", new_pw_hash, session["user_id"])
+            flash("Password changed")
+            return redirect("/")
         else:
             flash("Wrong old password")
             return redirect("/settings")
