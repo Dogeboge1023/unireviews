@@ -41,12 +41,13 @@ Also, with this project, I learned many CSS tricks while researching interesting
 
 As well as whole CS50 course led to this project and my understanding that I really like working with software and computers. Thanks to David J. Malan
 ## Screenshots:
-![Hompage Desktop](/unireviews/screenshots/homepagedesktop.png)
-![Hompage Desktop](/unireviews/screenshots/reviewdesktop.png)
-![Hompage Desktop](/unireviews/screenshots/homepagephone.png)
-![Hompage Desktop](/unireviews/screenshots/reviewphone.png)
+![homepagedesktop](https://github.com/Dogeboge1023/unireviews/assets/82914110/27b63842-ca9f-4d25-83b0-cbf7786ba714)
+![reviewdesktop](https://github.com/Dogeboge1023/unireviews/assets/82914110/72ff39c3-f968-408c-9c5b-af9623ce6bb1)
+![homepagephone](https://github.com/Dogeboge1023/unireviews/assets/82914110/6758e8ec-614b-4dcd-9f6d-f0fa6d9b5ab7)
+![reviewphone](https://github.com/Dogeboge1023/unireviews/assets/82914110/78e5f649-cc62-4173-bdc7-35b9092e49d6)
 ## Stuff used:
 **Glassmorphism CSS Generator:** https://hype4.academy/tools/glassmorphism-generator
+
 
 **Google fonts and icons:** https://fonts.google.com/
 
