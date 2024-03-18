@@ -5,7 +5,6 @@ nav .navbar-brand
     font-family: "Jacquarda Bastarda 9", serif;
     font-weight: 400;
     font-style: normal;
-
 }
 .background-image{
     background: rgba( 129, 255, 133, 0.5 );
@@ -38,19 +37,14 @@ nav .navbar-brand
 .form-select{
     width: 170px;
 }
-.red-star{
-    color:red;
-}
 body{
     background-color: #181818;
 }
 .form-color {
-
     color: #d6d6d6;
     border: 2px solid rgb(255, 80, 80); /*try dashed here and maybe change color to something else like these: rgb(255, 80, 80); rgb(255, 129, 133);*/
     background-color: #323232;
     padding: 5px;
-  
 }
 .form-color::placeholder{
     color: #d6d6d6;
@@ -71,7 +65,6 @@ body{
     border: none;
     cursor: pointer;
   }
-  
   .button-color:hover {
     background-color: #176e34; /* Darker teal color on hover */
   }
